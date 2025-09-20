@@ -25,14 +25,14 @@ function WelcomePopup({ isVisible, onClose }) {
           <div className="instruction-step">
             <span className="step-number">1️⃣</span>
             <div className="step-text">
-              <strong>Pick a Color</strong> - Choose from one of the four colors to start your challenge!
+              <strong>Pick a Category</strong> - Choose a color to start your daily challenge!
             </div>
           </div>
 
           <div className="instruction-step">
             <span className="step-number">2️⃣</span>
             <div className="step-text">
-              <strong>Watch & Guess</strong> - A drawing will appear line by line. Can you guess what it is?
+              <strong>Watch & Guess</strong> - Click Begin and watch the drawing appear line by line. Can you guess what it is?
             </div>
           </div>
 
@@ -44,16 +44,16 @@ function WelcomePopup({ isVisible, onClose }) {
           </div>
 
           <div className="instruction-step">
-            <span className="step-number">⚡</span>
+            <span className="step-number">💪</span>
             <div className="step-text">
-              <strong>How Good Are You?</strong> - Choose Easy or Hard Mode, do you need the dots to help you?
+              <strong>Too Easy for You?</strong> - Try Hard Mode for extra difficulty but also an extra trophy!
             </div>
           </div>
 
           <div className="instruction-step">
-            <span className="step-number">🎯</span>
+            <span className="step-number">🏆</span>
             <div className="step-text">
-              <strong>Beat the Clock</strong> - Complete all 4 colors to master the daily challenge!
+              <strong>Everyone Likes a Trophy!</strong> - Get it in one try, get it before the image is done drawing, get it on Hard Mode to win all three trophys!
             </div>
           </div>
         </div>
