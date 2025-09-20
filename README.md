@@ -98,15 +98,43 @@ AnticipationDaily-React/
 ### Game Mode Enhancements
 - **Dynamic Drawing Speed**: Drawing animation now uses pixel-based speed rather than point-based speed, making longer lines take proportionally longer to draw
 - **Hint System**: Implemented a cooldown-based hint system with configurable timing
-- **Difficulty Modes**: 
+- **Difficulty Modes**:
   - Easy mode shows dots where the drawing will appear and provides hints
   - Hard mode hides dots and doesn't offer hints
 - **Responsive Word Display**: Words automatically resize to fit available space on all screen sizes
 - **Space-Aware Word Handling**: Properly handles multi-word phrases with appropriate spacing
-- **Mobile Optimizations**: 
+- **Mobile Optimizations**:
   - Tighter letter spacing and smaller fonts on mobile devices
   - Touch-friendly UI elements
   - Responsive layout that adapts to screen size
+
+### GitHub Pages Deployment
+- **Automated Deployment**: GitHub Actions workflow automatically builds and deploys to GitHub Pages on push to main branch
+- **Production-Ready Configuration**: Proper base paths and asset handling for GitHub Pages hosting
+- **SPA Routing Support**: HashRouter implementation with 404.html fallback for single-page app routing
+- **Environment-Aware Asset Loading**: Audio and other assets load correctly in both local development and production
+
+### Persistent Game Stats & Daily Reset System
+- **Automatic Daily Reset**: Game completion stats reset at midnight Central Time (with DST support)
+- **Persistent Storage**: Game progress and user preferences survive page refreshes
+- **Central Time Zone Handling**: Accurate timezone calculations with automatic DST adjustments
+- **Debug Reset Functionality**: Development-only debug button for manual stats reset during testing
+- **Cross-Session Persistence**: User settings and game state maintained across browser sessions
+
+### Audio System Improvements
+- **Default Audio Enabled**: Audio is now enabled by default for better user experience
+- **Persistent Audio Preferences**: Audio settings are saved and restored across sessions
+- **Environment-Aware Audio Paths**: Audio files load correctly in both development and production environments
+- **Cross-Platform Audio Support**: Reliable audio playback across different hosting environments
+
+### Development & Debugging Tools
+- **Environment Detection**: Improved development environment detection using `import.meta.env.DEV`
+- **Debug Reset Button**: Development-only button on home page for easy stats reset during testing
+- **Enhanced Console Logging**: Environment variable logging for troubleshooting deployment issues
+- **Development Server Configuration**: Proper host binding for remote access via Tailscale and local networks
+- **Debug Button Implementation**: Located in `src/components/Home.jsx:124-128`, only visible when `isDevelopment` is true
+- **Debug Reset Utility**: Implemented in `src/utils/dailyReset.js` with `debugResetStats()` function
+- **Environment Variable Debugging**: Console logging in Home component shows DEV, MODE, PROD, and isDevelopment values
 
 ### Theme System 
 - **Multiple Theme Support**: The app now supports switchable themes (Modern and 8-bit themes included)
