@@ -56,7 +56,7 @@ function Home() {
 
   return (
     <div className="home">
-      <h1>Daily Anticipation</h1>
+      <h1>React Daily</h1>
       
       <div className="categories-grid">
         {categories.map(category => (

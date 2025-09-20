@@ -144,7 +144,7 @@ export function MenuProvider({ children }) {
     
     // Update title with theme name (to indicate theme is applied)
     const themeName = state.currentTheme === '8bit' ? '8-Bit' : 'Modern';
-    document.title = `Daily Anticipation - ${themeName}`;
+    document.title = `React Daily - ${themeName}`;
   }, [state]);
   
   // Add a separate effect that runs once on mount to apply theme CSS

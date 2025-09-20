@@ -36,7 +36,7 @@ function ThemeTest() {
   return (
     <div className="theme-test-container">
       <div className="menu-icon">≡</div>
-      <h1>Daily Anticipation</h1>
+      <h1>React Daily</h1>
       
       {/* Theme toggle for easy comparison */}
       <div className="theme-toggle">

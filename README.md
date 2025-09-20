@@ -1,7 +1,7 @@
-# Anticipation Daily - React App
+# React Daily - React App
 
 ## Project Overview
-This is a React-based web application for the Anticipation Daily game/puzzle experience. The app consists of both a game mode where users can play puzzles and a builder mode where new puzzles can be created.
+This is a React-based web application for the React Daily game/puzzle experience. The app consists of both a game mode where users can play puzzles and a builder mode where new puzzles can be created.
 
 ## File Structure
 
