@@ -1,4 +1,5 @@
 import { createContext, useContext, useReducer, useEffect, useState } from 'react';
+import { getMusicPath, getSoundPath } from '../utils/audioUtils';
 
 // Get the saved theme from localStorage or use default 'modern'
 const getSavedTheme = () => {
@@ -29,7 +30,7 @@ const initialState = {
   },
   
   // Currently selected song for testing
-  selectedSong: '/music/song_00000.mp3',
+  selectedSong: getMusicPath(0),
   
   // Shuffle mode
   shuffleEnabled: false
@@ -200,7 +201,7 @@ export function MenuProvider({ children }) {
         // Get all MP3 files from the music folder
         const musicFiles = [];
         for (let i = 0; i <= 55; i++) {
-          const songPath = `/music/song_${String(i).padStart(5, '0')}.mp3`;
+          const songPath = getMusicPath(i);
           // Check if the file exists by attempting to load it
           try {
             const response = await fetch(songPath, { method: 'HEAD' });
@@ -503,7 +504,7 @@ export function MenuProvider({ children }) {
   // Test sound function
   const playTestSound = () => {
     if (state.audioEnabled) {
-      const sound = new Audio('/sounds/correct.mp3');
+      const sound = new Audio(getSoundPath('correct'));
       sound.volume = state.sfxVolume / 100;
       sound.play().catch(error => {
         console.error('Error playing test sound:', error);

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useCallback, useState } from 'react';
 import { useMenuContext } from '../../contexts/MenuContext';
+import { getSoundPath } from '../../utils/audioUtils';
 
 /**
  * Custom hook for audio effects
@@ -40,10 +41,10 @@ export const useAudioEffects = (config = {}) => {
       
       // Define sound buffers (we'll load them asynchronously)
       const soundsToLoad = {
-        completion: '/sounds/completion.mp3',
-        correct: '/sounds/correct.mp3',
-        incorrect: '/sounds/incorrect.mp3',
-        guess: '/sounds/guess.mp3'
+        completion: getSoundPath('completion'),
+        correct: getSoundPath('correct'),
+        incorrect: getSoundPath('incorrect'),
+        guess: getSoundPath('guess')
       };
       
       // Load each sound

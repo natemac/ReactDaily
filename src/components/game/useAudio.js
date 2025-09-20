@@ -1,4 +1,5 @@
 import { useEffect, useRef, useCallback } from 'react';
+import { getSoundPath } from '../../utils/audioUtils';
 
 /**
  * Custom hook for audio effects
@@ -35,10 +36,10 @@ export const useAudio = (config = {}) => {
       
       // Define sound buffers (we'll load them asynchronously)
       const soundsToLoad = {
-        tick: '/sounds/tick.mp3',
-        success: '/sounds/success.mp3',
-        wrong: '/sounds/wrong.mp3',
-        hint: '/sounds/hint.mp3'
+        tick: getSoundPath('tick'),
+        success: getSoundPath('success'),
+        wrong: getSoundPath('wrong'),
+        hint: getSoundPath('hint')
       };
       
       // Load each sound
