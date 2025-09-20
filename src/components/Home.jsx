@@ -7,6 +7,7 @@ import greenJson from '../assets/items/green.json';
 import blueJson from '../assets/items/blue.json';
 import redJson from '../assets/items/red.json';
 import CategoryCard from './game/CompletionUI/CategoryCard';
+import { debugResetStats } from '../utils/dailyReset';
 import './Home.css';
 
 function Home() {
@@ -107,6 +108,13 @@ function Home() {
       <button className="builder-button" onClick={goToBuilder}>
         Create and Share your own Drawings
       </button>
+
+      {/* Debug reset button - only show in development */}
+      {import.meta.env.DEV && (
+        <button className="debug-reset-button" onClick={debugResetStats}>
+          🔧 DEBUG: Reset All Stats
+        </button>
+      )}
     </div>
   );
 }

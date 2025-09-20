@@ -125,6 +125,7 @@ input:checked + .slider:before {
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  margin-bottom: 10px;
 }
 
 .builder-button:hover {
@@ -134,6 +135,34 @@ input:checked + .slider:before {
 
 .builder-button:active {
   transform: translateY(0);
+}
+
+/* Debug Reset Button (Development Only) */
+.debug-reset-button {
+  background-color: #FF5722;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  border: 2px dashed #FF8A65;
+  margin-top: 10px;
+  opacity: 0.9;
+}
+
+.debug-reset-button:hover {
+  background-color: #D84315;
+  transform: translateY(-1px);
+  opacity: 1;
+}
+
+.debug-reset-button:active {
+  transform: translateY(0);
+  background-color: #BF360C;
 }
 
 /* Responsive Adjustments */
@@ -154,5 +183,11 @@ input:checked + .slider:before {
   .builder-button {
     width: 100%;
     padding: 10px 16px;
+  }
+
+  .debug-reset-button {
+    width: 100%;
+    padding: 8px 12px;
+    font-size: 0.8rem;
   }
 } 

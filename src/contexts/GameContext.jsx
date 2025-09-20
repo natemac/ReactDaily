@@ -1,4 +1,5 @@
 import { createContext, useContext, useReducer, useEffect } from 'react';
+import { shouldResetStats, getCurrentDateString } from '../utils/dailyReset';
 
 // Initial state
 const initialState = {
@@ -49,7 +50,9 @@ const ActionTypes = {
   UPDATE_TIMER: 'UPDATE_TIMER',
   TOGGLE_TIMER: 'TOGGLE_TIMER',
   COMPLETE_CATEGORY: 'COMPLETE_CATEGORY',
-  RESET_GAME: 'RESET_GAME'
+  RESET_GAME: 'RESET_GAME',
+  DAILY_RESET: 'DAILY_RESET',
+  LOAD_SAVED_STATE: 'LOAD_SAVED_STATE'
 };
 
 // Reducer function
@@ -173,7 +176,24 @@ function gameReducer(state, action) {
         elapsedTime: 0,
         timerActive: false
       };
-      
+
+    case ActionTypes.DAILY_RESET:
+      return {
+        ...state,
+        completedCategories: {
+          yellow: { completed: false, stats: null, achievements: null },
+          green: { completed: false, stats: null, achievements: null },
+          blue: { completed: false, stats: null, achievements: null },
+          red: { completed: false, stats: null, achievements: null }
+        }
+      };
+
+    case ActionTypes.LOAD_SAVED_STATE:
+      return {
+        ...state,
+        ...action.payload
+      };
+
     default:
       return state;
   }
@@ -185,24 +205,49 @@ const GameContext = createContext();
 // Provider component
 export function GameProvider({ children }) {
   const [state, dispatch] = useReducer(gameReducer, initialState);
-  
-  // Load saved state from localStorage on mount
+
+  // Load saved state from localStorage on mount and check for daily reset
   useEffect(() => {
+    const lastReset = localStorage.getItem('reactDaily_lastReset');
     const savedState = localStorage.getItem('gameState');
-    if (savedState) {
-      try {
-        const parsedState = JSON.parse(savedState);
-        Object.keys(parsedState).forEach(key => {
-          if (key in initialState && key !== 'drawingData') {
-            dispatch({ type: `SET_${key.toUpperCase()}`, payload: parsedState[key] });
+
+    // Check if we need to reset stats for a new day
+    if (shouldResetStats(lastReset)) {
+      console.log('🌅 New day detected! Resetting completed categories...');
+
+      // Perform daily reset
+      dispatch({ type: ActionTypes.DAILY_RESET });
+
+      // Update last reset timestamp
+      localStorage.setItem('reactDaily_lastReset', getCurrentDateString());
+
+      // If there was saved state, load only the config (not completed categories)
+      if (savedState) {
+        try {
+          const parsedState = JSON.parse(savedState);
+          if (parsedState.config) {
+            dispatch({
+              type: ActionTypes.LOAD_SAVED_STATE,
+              payload: { config: parsedState.config }
+            });
           }
-        });
-      } catch (error) {
-        console.error('Error loading saved state:', error);
+        } catch (error) {
+          console.error('Error loading saved config after reset:', error);
+        }
+      }
+    } else {
+      // Normal load - no reset needed
+      if (savedState) {
+        try {
+          const parsedState = JSON.parse(savedState);
+          dispatch({ type: ActionTypes.LOAD_SAVED_STATE, payload: parsedState });
+        } catch (error) {
+          console.error('Error loading saved state:', error);
+        }
       }
     }
   }, []);
-  
+
   // Save state to localStorage when it changes
   useEffect(() => {
     const stateToSave = {
@@ -211,6 +256,23 @@ export function GameProvider({ children }) {
     };
     localStorage.setItem('gameState', JSON.stringify(stateToSave));
   }, [state.config, state.completedCategories]);
+
+  // Periodic check for daily reset (every 5 minutes)
+  useEffect(() => {
+    const checkForReset = () => {
+      const lastReset = localStorage.getItem('reactDaily_lastReset');
+      if (shouldResetStats(lastReset)) {
+        console.log('🌅 Periodic check: New day detected! Resetting completed categories...');
+        dispatch({ type: ActionTypes.DAILY_RESET });
+        localStorage.setItem('reactDaily_lastReset', getCurrentDateString());
+      }
+    };
+
+    // Check every 5 minutes (300000 ms)
+    const interval = setInterval(checkForReset, 300000);
+
+    return () => clearInterval(interval);
+  }, []);
   
   return (
     <GameContext.Provider value={{ state, dispatch, ActionTypes }}>
