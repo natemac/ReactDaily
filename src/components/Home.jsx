@@ -8,6 +8,7 @@ import blueJson from '../assets/items/blue.json';
 import redJson from '../assets/items/red.json';
 import CategoryCard from './game/CompletionUI/CategoryCard';
 import { debugResetStats } from '../utils/dailyReset';
+import WelcomePopup from './WelcomePopup';
 import './Home.css';
 
 function Home() {
@@ -33,18 +34,38 @@ function Home() {
     { color: 'red', name: redJson.categoryName }
   ]);
   const [musicAssignments, setMusicAssignments] = useState({});
+  const [showWelcomePopup, setShowWelcomePopup] = useState(false);
 
   // Ensure music is preloaded and assigned to categories when the home screen loads
   useEffect(() => {
     // The music preloading happens in the MenuContext when it's initialized,
     // so we just need to extract the music assignments for display purposes
     setMusicAssignments(menuState.categoryMusic);
-    
+
     // We can log the assignments to console for debugging
     if (menuState.categoryMusic && Object.values(menuState.categoryMusic).some(v => v)) {
       console.log('Music assignments for categories:', menuState.categoryMusic);
     }
   }, [menuState.categoryMusic]);
+
+  // Check if welcome popup should be shown on first visit
+  useEffect(() => {
+    const welcomeShown = localStorage.getItem('reactDaily_welcomeShown');
+    if (!welcomeShown) {
+      setShowWelcomePopup(true);
+    }
+
+    // Listen for custom event to show welcome popup from menu
+    const handleShowWelcomeEvent = () => {
+      setShowWelcomePopup(true);
+    };
+
+    window.addEventListener('showWelcome', handleShowWelcomeEvent);
+
+    return () => {
+      window.removeEventListener('showWelcome', handleShowWelcomeEvent);
+    };
+  }, []);
 
   const handleCategoryClick = (category) => {
     // Don't navigate if the category is already completed
@@ -64,6 +85,14 @@ function Home() {
 
   const goToBuilder = () => {
     navigate('/builder');
+  };
+
+  const handleShowWelcome = () => {
+    setShowWelcomePopup(true);
+  };
+
+  const handleCloseWelcome = () => {
+    setShowWelcomePopup(false);
   };
 
   return (
@@ -139,6 +168,12 @@ function Home() {
           return `${year}${month}${day}-${hours}${minutes}`;
         })()}
       </footer>
+
+      {/* Welcome Popup */}
+      <WelcomePopup
+        isVisible={showWelcomePopup}
+        onClose={handleCloseWelcome}
+      />
     </div>
   );
 }

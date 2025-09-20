@@ -751,4 +751,61 @@ input:checked + .slider:before {
   color: #ffffff;
   fill: #ffffff;
   stroke: #ffffff;
+}
+
+/* How To Button */
+.howToButton {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  width: 100%;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.howToButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+  background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+}
+
+.howToButton:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.howToButton .menuItemIcon {
+  margin-right: 12px;
+  font-size: 1.2rem;
+}
+
+.howToButton .menuItemText {
+  font-size: 1rem;
+}
+
+/* 8-bit theme override for How To button */
+[data-theme='8bit'] .howToButton {
+  background: #00bfff;
+  border: 2px solid #000;
+  border-radius: 0;
+  box-shadow: 4px 4px 0 #000;
+  color: #000;
+  font-weight: bold;
+}
+
+[data-theme='8bit'] .howToButton:hover {
+  transform: translate(1px, 1px);
+  box-shadow: 3px 3px 0 #000;
+  background: #00a8e6;
+}
+
+[data-theme='8bit'] .howToButton:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 #000;
 } 

@@ -450,6 +450,23 @@ const HamburgerMenu = () => {
               </button>
             </div>
           </div>
+
+          {/* Divider */}
+          <div className={styles.divider}></div>
+
+          {/* Help Section */}
+          <div className={styles.menuSection}>
+            <button
+              className={styles.howToButton}
+              onClick={() => {
+                window.dispatchEvent(new CustomEvent('showWelcome'));
+                closeMenu();
+              }}
+            >
+              <span className={styles.menuItemIcon}>❓</span>
+              <span className={styles.menuItemText}>How To Play</span>
+            </button>
+          </div>
         </div>
       </div>
       
