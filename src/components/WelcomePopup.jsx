@@ -18,14 +18,14 @@ function WelcomePopup({ isVisible, onClose }) {
       <div className="welcome-popup">
         <div className="welcome-header">
           <h2>🎨 Welcome to React Daily! 🎨</h2>
-          <div className="welcome-subtitle">Let's get drawing!</div>
+          <div className="welcome-subtitle">Go, Draw, Guess – That's It!</div>
         </div>
 
         <div className="welcome-content">
           <div className="instruction-step">
             <span className="step-number">1️⃣</span>
             <div className="step-text">
-              <strong>Pick a Category</strong> - Choose from Holidays, Animals, Emojis, or Shapes!
+              <strong>Pick a Color</strong> - Choose from one of the four colors to start your challenge!
             </div>
           </div>
 
@@ -37,16 +37,23 @@ function WelcomePopup({ isVisible, onClose }) {
           </div>
 
           <div className="instruction-step">
-            <span className="step-number">3️⃣</span>
+            <span className="step-number">⚡</span>
             <div className="step-text">
-              <strong>Choose Your Challenge</strong> - Easy mode shows dots, Hard mode doesn't!
+              <strong>How Good Are You?</strong> - Easy mode shows dots, Hard mode doesn't!
             </div>
           </div>
 
           <div className="instruction-step">
             <span className="step-number">🎯</span>
             <div className="step-text">
-              <strong>Beat the Clock</strong> - Complete all 4 categories to master the daily challenge!
+              <strong>Beat the Clock</strong> - Complete all 4 colors to master the daily challenge!
+            </div>
+          </div>
+
+          <div className="instruction-step">
+            <span className="step-number">3️⃣</span>
+            <div className="step-text">
+              <strong>Challenge Your Friends</strong> - Share your results each day and challenge your friends and family to beat your best!
             </div>
           </div>
         </div>
