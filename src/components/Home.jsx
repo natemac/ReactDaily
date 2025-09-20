@@ -15,6 +15,17 @@ function Home() {
   const { state, dispatch, ActionTypes } = useGameContext();
   const { state: menuState } = useMenuContext();
   const { completedCategories, config } = state;
+
+  // Check if we're in development mode
+  const isDevelopment = import.meta.env.DEV;
+
+  // Debug logging
+  console.log('Environment check:', {
+    DEV: import.meta.env.DEV,
+    MODE: import.meta.env.MODE,
+    PROD: import.meta.env.PROD,
+    isDevelopment
+  });
   const [categories] = useState([
     { color: 'yellow', name: yellowJson.categoryName },
     { color: 'green', name: greenJson.categoryName },
@@ -110,7 +121,7 @@ function Home() {
       </button>
 
       {/* Debug reset button - only show in development */}
-      {import.meta.env.DEV && (
+      {isDevelopment && (
         <button className="debug-reset-button" onClick={debugResetStats}>
           🔧 DEBUG: Reset All Stats
         </button>
