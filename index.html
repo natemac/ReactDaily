@@ -8,7 +8,21 @@
     <link rel="preload" href="/src/styles/themes/modern.css" as="style">
     <link rel="preload" href="/src/styles/themes/8bit.css" as="style">
     <link rel="stylesheet" href="/src/styles/themes/themeBase.css">
-    <title>Daily Anticipation</title>
+    <title>React Daily</title>
+    <script type="text/javascript">
+      // Single Page Apps for GitHub Pages
+      // Fixes routing on GitHub Pages by redirecting 404s back to index.html
+      (function(l) {
+        if (l.search[1] === '/' ) {
+          var decoded = l.search.slice(1).split('&').map(function(s) {
+            return s.replace(/~and~/g, '&')
+          }).join('?');
+          window.history.replaceState(null, null,
+              l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      }(window.location))
+    </script>
     <script>
       // Apply stored theme immediately to prevent flash of incorrect theme
       (function() {
@@ -29,7 +43,7 @@
               
               // Update title with theme name
               const themeName = theme === '8bit' ? '8-Bit' : 'Modern';
-              document.title = `Daily Anticipation - ${themeName}`;
+              document.title = `React Daily - ${themeName}`;
             } else {
               // Default to modern theme if no theme found
               document.documentElement.setAttribute('data-theme', 'modern');
