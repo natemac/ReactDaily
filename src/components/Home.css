@@ -190,4 +190,15 @@ input:checked + .slider:before {
     padding: 8px 12px;
     font-size: 0.8rem;
   }
+}
+
+/* Footer */
+.app-footer {
+  margin-top: 2rem;
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--text-color, #666);
+  opacity: 0.7;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
 } 

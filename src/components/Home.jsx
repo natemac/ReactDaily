@@ -16,8 +16,8 @@ function Home() {
   const { state: menuState } = useMenuContext();
   const { completedCategories, config } = state;
 
-  // Check if we're in development mode
-  const isDevelopment = import.meta.env.DEV;
+  // Check if we're in development mode (temporarily enabled for production testing)
+  const isDevelopment = true; // import.meta.env.DEV;
 
   // Debug logging
   console.log('Environment check:', {
@@ -126,6 +126,19 @@ function Home() {
           🔧 DEBUG: Reset All Stats
         </button>
       )}
+
+      {/* Footer */}
+      <footer className="app-footer">
+        React Daily created by Nathan McGraw - Version {(() => {
+          const now = new Date();
+          const year = now.getFullYear().toString().slice(-2);
+          const month = (now.getMonth() + 1).toString().padStart(2, '0');
+          const day = now.getDate().toString().padStart(2, '0');
+          const hours = now.getHours().toString().padStart(2, '0');
+          const minutes = now.getMinutes().toString().padStart(2, '0');
+          return `${year}${month}${day}-${hours}${minutes}`;
+        })()}
+      </footer>
     </div>
   );
 }

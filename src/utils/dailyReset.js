@@ -98,17 +98,18 @@ export function getCurrentDateString() {
 
 /**
  * Debug function to manually reset stats
- * Only available in development mode
+ * Temporarily enabled for production testing
  */
 export function debugResetStats() {
-  if (import.meta.env.DEV) {
+  // Temporarily enabled for production testing
+  // if (import.meta.env.DEV) {
     localStorage.removeItem('gameState');
     localStorage.removeItem('reactDaily_lastReset');
     console.log('🔧 DEBUG: Game stats manually reset');
     window.location.reload(); // Reload to apply changes
-  } else {
-    console.warn('Debug reset is only available in development mode');
-  }
+  // } else {
+  //   console.warn('Debug reset is only available in development mode');
+  // }
 }
 
 /**
