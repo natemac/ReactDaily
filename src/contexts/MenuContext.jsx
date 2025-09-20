@@ -11,13 +11,31 @@ const getSavedTheme = () => {
   }
 };
 
+// Get the saved audio setting from localStorage or use default 'true'
+const getSavedAudioEnabled = () => {
+  try {
+    const savedSettings = localStorage.getItem('appSettings');
+    if (savedSettings) {
+      const parsedSettings = JSON.parse(savedSettings);
+      // If audioEnabled is explicitly set, use that value
+      if (parsedSettings.audioEnabled !== undefined) {
+        return parsedSettings.audioEnabled;
+      }
+    }
+    // Default to enabled if not found
+    return true;
+  } catch (e) {
+    return true;
+  }
+};
+
 // Initial state
 const initialState = {
   // Audio settings
-  audioEnabled: true,
+  audioEnabled: getSavedAudioEnabled(), // Use function to get saved audio setting
   musicVolume: 40,
   sfxVolume: 50,
-  
+
   // Appearance settings
   currentTheme: getSavedTheme(), // Use function to get saved theme
 
@@ -39,6 +57,7 @@ const initialState = {
 // Action types
 const ActionTypes = {
   TOGGLE_AUDIO: 'TOGGLE_AUDIO',
+  SET_AUDIO_ENABLED: 'SET_AUDIO_ENABLED',
   SET_MUSIC_VOLUME: 'SET_MUSIC_VOLUME',
   SET_SFX_VOLUME: 'SET_SFX_VOLUME',
   SET_THEME: 'SET_THEME',
@@ -54,6 +73,12 @@ function menuReducer(state, action) {
       return {
         ...state,
         audioEnabled: !state.audioEnabled
+      };
+
+    case ActionTypes.SET_AUDIO_ENABLED:
+      return {
+        ...state,
+        audioEnabled: action.payload
       };
       
     case ActionTypes.SET_MUSIC_VOLUME:
@@ -116,7 +141,7 @@ export function MenuProvider({ children }) {
       try {
         const parsedSettings = JSON.parse(savedSettings);
         if (parsedSettings.audioEnabled !== undefined) {
-          dispatch({ type: ActionTypes.TOGGLE_AUDIO, payload: parsedSettings.audioEnabled });
+          dispatch({ type: ActionTypes.SET_AUDIO_ENABLED, payload: parsedSettings.audioEnabled });
         }
         if (parsedSettings.musicVolume !== undefined) {
           dispatch({ type: ActionTypes.SET_MUSIC_VOLUME, payload: parsedSettings.musicVolume });
