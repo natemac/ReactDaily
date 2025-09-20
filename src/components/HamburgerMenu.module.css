@@ -1,0 +1,754 @@
+.menuContainer {
+  position: relative;
+  z-index: 1000;
+}
+
+/* Hamburger Button */
+.hamburgerButton {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 24px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1002;
+  position: absolute;
+  top: var(--spacing-medium);
+  right: var(--spacing-medium);
+}
+
+.hamburgerButton span {
+  width: 100%;
+  height: 3px;
+  background-color: var(--text-color);
+  border-radius: 3px;
+  transition: all var(--transition-regular);
+}
+
+.hamburgerButton.open span:first-child {
+  transform: translateY(10px) rotate(45deg);
+}
+
+.hamburgerButton.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburgerButton.open span:last-child {
+  transform: translateY(-10px) rotate(-45deg);
+}
+
+/* Menu Panel */
+.menuPanel {
+  position: fixed;
+  top: 0;
+  right: -300px;
+  width: 300px;
+  height: 100vh;
+  background-color: var(--menu-background);
+  box-shadow: var(--shadow-medium);
+  transition: right var(--transition-regular);
+  z-index: 1001;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.menuPanel.open {
+  right: 0;
+}
+
+.menuContent {
+  display: flex;
+  flex-direction: column;
+  padding: var(--spacing-large);
+  padding-top: calc(var(--spacing-xlarge) + 30px);
+  height: 100%;
+}
+
+/* Menu Sections */
+.menuSection {
+  margin-bottom: var(--spacing-small);
+  width: 100%;
+}
+
+.sectionTitle {
+  font-size: var(--font-size-large);
+  margin-bottom: var(--spacing-small);
+  color: var(--text-color);
+  font-weight: bold;
+}
+
+.divider {
+  height: 1px;
+  background-color: var(--menu-border-color);
+  margin: 0;
+  width: 100%;
+  opacity: 0.5;
+}
+
+/* Menu Items */
+.menuItem {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  text-align: left;
+  padding: 12px 15px;
+  margin-bottom: 8px;
+  background-color: transparent;
+  border: none;
+  border-radius: var(--border-radius-small);
+  color: var(--menu-text-color);
+  cursor: pointer;
+  font-size: var(--font-size-regular);
+  transition: background-color var(--transition-quick);
+}
+
+.menuItem:hover {
+  background-color: var(--menu-hover-background);
+}
+
+/* Active menu item */
+.menuItem.active {
+  background-color: var(--menu-active-background);
+  font-weight: bold;
+  color: var(--button-text-color);
+  border-left: 4px solid var(--primary-color);
+}
+
+/* Menu item icons */
+.menuItemIcon {
+  margin-right: var(--spacing-small);
+  font-size: 1.2em;
+}
+
+.menuItemText {
+  flex: 1;
+}
+
+/* Audio Toggle */
+.toggleContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-small);
+}
+
+.toggleLabel {
+  font-size: var(--font-size-regular);
+  color: var(--text-color);
+}
+
+.toggleSwitch {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 24px;
+}
+
+.toggleSwitch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--disabled-color);
+  transition: var(--transition-regular);
+  border-radius: var(--border-radius-pill);
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: var(--transition-regular);
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: var(--primary-color);
+}
+
+input:checked + .slider:before {
+  transform: translateX(24px);
+}
+
+/* Volume Controls */
+.volumeControl {
+  margin-bottom: var(--spacing-small);
+}
+
+.volumeControl label {
+  display: block;
+  margin-bottom: var(--spacing-xsmall);
+  color: var(--text-color);
+  font-size: var(--font-size-small);
+}
+
+.sliderContainer {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.volumeSlider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  background: var(--slider-background-color);
+  border-radius: var(--border-radius-pill);
+  outline: none;
+  margin-right: var(--spacing-small);
+}
+
+.volumeSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: var(--primary-color);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.volumeSlider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: var(--primary-color);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.volumeValue {
+  min-width: 40px;
+  text-align: right;
+  font-size: var(--font-size-xsmall);
+  color: var(--text-color);
+  font-family: monospace;
+}
+
+/* Song Selector */
+.songSelector {
+  margin-bottom: var(--spacing-medium);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: var(--menu-hover-background);
+  border-radius: var(--border-radius-small);
+  padding: 12px;
+}
+
+.songName {
+  font-family: monospace;
+  font-size: var(--font-size-medium);
+  color: var(--text-color);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 8px;
+  background-color: var(--menu-background);
+  border-radius: var(--border-radius-small);
+}
+
+.songControls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+}
+
+.songNavButton,
+.playButton {
+  flex: 1;
+  background-color: var(--primary-color);
+  color: var(--button-text-color);
+  border: none;
+  border-radius: var(--border-radius-small);
+  padding: 8px 0;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all var(--transition-quick);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc((100% - 16px) / 3);
+  min-width: 36px;
+  line-height: 1;
+  height: 40px;
+}
+
+.songNavButton svg,
+.playButton svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+  margin: auto;
+}
+
+[data-theme='8bit'] .songNavButton svg,
+[data-theme='8bit'] .playButton svg {
+  width: 20px;
+  height: 20px;
+}
+
+[data-theme='8bit'] .songNavButton,
+[data-theme='8bit'] .playButton {
+  border: 2px solid #000 !important;
+  border-radius: 0 !important;
+  padding: 6px 0 !important;
+  height: 36px !important;
+  background-color: #000 !important;
+  color: #fff !important;
+  box-shadow: 2px 2px #444 !important;
+}
+
+[data-theme='8bit'] .songNavButton:hover,
+[data-theme='8bit'] .playButton:hover {
+  transform: translate(1px, 1px) !important;
+  box-shadow: 1px 1px #444 !important;
+}
+
+[data-theme='8bit'] .songNavButton:active,
+[data-theme='8bit'] .playButton:active {
+  transform: translate(2px, 2px) !important;
+  box-shadow: none !important;
+}
+
+.testMusicButton {
+  display: block;
+  width: 100%;
+  padding: 10px 15px;
+  background-color: var(--music-button-color, #4a6da7);
+  color: var(--button-text-color);
+  border: none;
+  border-radius: var(--border-radius-small);
+  font-size: var(--font-size-small);
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color var(--transition-quick);
+}
+
+.testMusicButton:hover {
+  background-color: var(--music-button-hover-color, #5d80ba);
+}
+
+.testMusicButton:active {
+  transform: translateY(1px);
+}
+
+.testSoundButton {
+  display: block;
+  width: 100%;
+  padding: 10px 15px;
+  background-color: var(--primary-color);
+  color: var(--button-text-color);
+  border: none;
+  border-radius: var(--border-radius-small);
+  font-size: var(--font-size-small);
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color var(--transition-quick);
+}
+
+.testSoundButton:hover {
+  background-color: var(--button-hover-color);
+}
+
+.testSoundButton:active {
+  transform: translateY(1px);
+}
+
+/* Theme Selection */
+.themeContainer {
+  display: flex;
+  gap: var(--spacing-small);
+}
+
+.themeButton {
+  flex: 1;
+  padding: var(--spacing-small);
+  background-color: transparent;
+  border: 2px solid var(--primary-color);
+  border-radius: var(--border-radius-small);
+  color: var(--text-color);
+  cursor: pointer;
+  transition: background-color var(--transition-quick);
+}
+
+.themeButton:hover {
+  background-color: var(--menu-hover-background);
+}
+
+.themeButton.active {
+  background-color: var(--primary-color);
+  color: var(--button-text-color);
+}
+
+.themeButton.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: var(--disabled-color, #cccccc);
+  box-shadow: none;
+}
+
+.themeButton.disabled:hover {
+  transform: none;
+  background-color: var(--disabled-color, #cccccc);
+}
+
+.themeWarning {
+  padding: 8px 12px;
+  margin-bottom: 12px;
+  background-color: rgba(255, 193, 7, 0.2);
+  border-left: 3px solid #FFC107;
+  color: var(--text-color);
+  font-size: var(--font-size-small, 14px);
+  border-radius: var(--border-radius-small, 4px);
+}
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 999;
+}
+
+/* Update hamburger icon to use three lines */
+.hamburgerIcon {
+  position: fixed;
+  top: 16px;
+  right: 12px;
+  z-index: 1002;
+  width: 30px;
+  height: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.hamburgerIcon span {
+  display: block;
+  height: 4px;
+  width: 100%;
+  background-color: #333;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+/* Improved hamburger icon open state - transform to X */
+.hamburgerIcon.open span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.hamburgerIcon.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburgerIcon.open span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+[data-theme='8bit'] .hamburgerIcon span {
+  border-radius: 0;
+  height: 4px;
+  background-color: #1a1a1a;
+}
+
+/* Add bottom padding to avoid content being hidden behind potential browser bars */
+.menuContent {
+  padding-bottom: 80px;
+}
+
+@media (max-height: 700px) {
+  .menuSection {
+    margin-bottom: var(--spacing-xsmall);
+  }
+
+  .menuContent {
+    padding: var(--spacing-medium);
+    padding-top: calc(var(--spacing-large) + 20px);
+  }
+
+  .songSelector {
+    margin-bottom: var(--spacing-xsmall);
+  }
+
+  .volumeControl {
+    margin-bottom: var(--spacing-xsmall);
+  }
+
+  .divider {
+    margin: var(--spacing-xsmall) 0;
+  }
+
+  .sectionTitle {
+    margin-bottom: var(--spacing-xsmall);
+    font-size: var(--font-size-medium);
+  }
+
+  .menuItem {
+    padding: 8px 12px;
+    margin-bottom: 4px;
+  }
+
+  .songSelector {
+    gap: 4px;
+    padding: 8px;
+  }
+
+  .songName {
+    padding: 4px;
+  }
+
+  .songControls {
+    gap: 4px;
+  }
+
+  .songNavButton,
+  .playButton {
+    padding: 0;
+    height: 36px;
+  }
+  
+  .modernMusicPlayer {
+    padding: 10px;
+    margin-bottom: var(--spacing-xsmall);
+  }
+  
+  .songTitle {
+    margin-bottom: 6px;
+  }
+  
+  .progressContainer {
+    margin-bottom: 8px;
+  }
+  
+  .toggleContainer {
+    margin-bottom: var(--spacing-xsmall);
+  }
+}
+
+/* Modern Music Player */
+.modernMusicPlayer {
+  background-color: var(--menu-hover-background);
+  border-radius: var(--border-radius-medium);
+  padding: 12px;
+  margin-bottom: var(--spacing-small);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.songDetails {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+}
+
+.songTitle {
+  font-family: monospace;
+  font-size: var(--font-size-medium);
+  color: var(--text-color);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.progressContainer {
+  width: 100%;
+  height: 4px;
+  background-color: var(--menu-background);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 12px;
+  cursor: pointer;
+}
+
+.progressBar {
+  height: 100%;
+  background-color: var(--primary-color);
+  border-radius: 2px;
+  transition: width 0.1s linear;
+}
+
+.timeInfo {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: var(--font-size-xsmall);
+  color: var(--text-color);
+  font-family: monospace;
+  margin-top: 2px;
+}
+
+.playerControls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+.controlButtons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex: 1;
+}
+
+.shuffleButton,
+.modernControlButton {
+  background-color: var(--primary-color);
+  color: var(--button-text-color);
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.shuffleButton {
+  font-size: 14px;
+}
+
+.shuffleButton.active {
+  background-color: var(--accent-color, #4a6da7);
+  box-shadow: 0 0 8px var(--accent-color, #4a6da7);
+}
+
+.modernControlButton:hover,
+.shuffleButton:hover {
+  transform: scale(1.1);
+  background-color: var(--button-hover-color);
+}
+
+.modernControlButton svg,
+.shuffleButton svg {
+  width: 18px;
+  height: 18px;
+}
+
+.playButton {
+  width: 36px;
+  height: 36px;
+  background-color: var(--primary-color);
+}
+
+.playButton svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* 8-bit theme overrides for modern player */
+[data-theme='8bit'] .modernMusicPlayer {
+  border: 2px solid #000;
+  box-shadow: 4px 4px 0 #000;
+  border-radius: 0;
+}
+
+[data-theme='8bit'] .progressContainer {
+  border: 1px solid #000;
+  border-radius: 0;
+  height: 8px;
+}
+
+[data-theme='8bit'] .progressBar {
+  border-radius: 0;
+}
+
+[data-theme='8bit'] .shuffleButton,
+[data-theme='8bit'] .modernControlButton {
+  border: 2px solid #000;
+  border-radius: 0;
+  box-shadow: 2px 2px 0 #000;
+  background-color: #00bfff;
+  width: 40px;
+  height: 40px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+[data-theme='8bit'] .shuffleButton:hover,
+[data-theme='8bit'] .modernControlButton:hover {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0 #000;
+}
+
+[data-theme='8bit'] .shuffleButton:active,
+[data-theme='8bit'] .modernControlButton:active {
+  transform: translate(2px, 2px);
+  box-shadow: none;
+}
+
+[data-theme='8bit'] .shuffleButton.active {
+  background-color: #000;
+  color: #fff;
+  box-shadow: none;
+}
+
+/* Special style for play/pause button */
+[data-theme='8bit'] .modernControlButton:nth-child(2) {
+  width: 46px;
+  height: 46px;
+  background-color: #e76e55;
+}
+
+/* Add styles specifically for SVG icons in 8-bit theme */
+[data-theme='8bit'] .modernControlButton svg,
+[data-theme='8bit'] .shuffleButton svg {
+  width: 20px;
+  height: 20px;
+  color: #000000;
+  fill: #000000;
+  /* Ensure the icons are visible */
+  stroke: #000000;
+  stroke-width: 1px;
+  /* Add an outline to make them stand out */
+  filter: drop-shadow(0 0 1px #ffffff);
+}
+
+/* Style for the play/pause button SVG */
+[data-theme='8bit'] .modernControlButton:nth-child(2) svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* Style for active shuffle button's SVG */
+[data-theme='8bit'] .shuffleButton.active svg {
+  color: #ffffff;
+  fill: #ffffff;
+  stroke: #ffffff;
+} 

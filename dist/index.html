@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daily Anticipation</title>
+    <script>
+      // Apply stored theme immediately to prevent flash of incorrect theme
+      (function() {
+        try {
+          const savedSettings = localStorage.getItem('appSettings');
+          if (savedSettings) {
+            const settings = JSON.parse(savedSettings);
+            if (settings && settings.currentTheme) {
+              document.documentElement.setAttribute('data-theme', settings.currentTheme);
+              
+              // Load theme stylesheet
+              const theme = settings.currentTheme;
+              const link = document.createElement('link');
+              link.id = 'theme-stylesheet';
+              link.rel = 'stylesheet';
+              link.href = `/src/styles/themes/${theme}.css`;
+              document.head.appendChild(link);
+              
+              // Update title with theme name
+              const themeName = theme === '8bit' ? '8-Bit' : 'Modern';
+              document.title = `Daily Anticipation - ${themeName}`;
+            } else {
+              // Default to modern theme if no theme found
+              document.documentElement.setAttribute('data-theme', 'modern');
+              const link = document.createElement('link');
+              link.id = 'theme-stylesheet';
+              link.rel = 'stylesheet';
+              link.href = '/src/styles/themes/modern.css';
+              document.head.appendChild(link);
+            }
+          } else {
+            // Default to modern theme if no settings found
+            document.documentElement.setAttribute('data-theme', 'modern');
+            const link = document.createElement('link');
+            link.id = 'theme-stylesheet';
+            link.rel = 'stylesheet';
+            link.href = '/src/styles/themes/modern.css';
+            document.head.appendChild(link);
+          }
+        } catch (e) {
+          console.error('Error applying theme:', e);
+          // In case of error, fall back to modern theme
+          document.documentElement.setAttribute('data-theme', 'modern');
+        }
+      })();
+    </script>
+    <script type="module" crossorigin src="/assets/index-eBplwCR3.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-Bj6wTZUG.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>

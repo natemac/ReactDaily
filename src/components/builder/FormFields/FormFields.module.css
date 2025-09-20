@@ -1,0 +1,80 @@
+.formFields {
+  width: 600px;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.divider {
+  border: 0;
+  height: 1px;
+  background-color: #e0e0e0;
+  margin: 10px 0 20px 0;
+  width: 100%;
+}
+
+.formRow {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.formRow input {
+  flex: 1;
+  padding: 14px 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: #f8f9fa;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  color: #333; /* Default text color when typing */
+}
+
+.formRow input:focus {
+  outline: none;
+  border-color: #4CAF50;
+  background-color: #fff;
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.15);
+}
+
+/* Placeholder styling */
+.formRow input::placeholder {
+  color: #aaa; /* Light grey for placeholder text */
+  opacity: 1; /* Make sure it's fully visible */
+}
+
+.formRow label {
+  min-width: 120px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #555;
+  text-align: right;
+  margin: 0;
+}
+
+/* Add responsive styles */
+@media (max-width: 640px) {
+  .formFields {
+    width: 100%;
+    padding: 0 15px;
+  }
+  
+  .formRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .formRow label {
+    min-width: auto;
+    text-align: left;
+    margin-bottom: 6px;
+  }
+  
+  .formRow input {
+    width: 100%;
+    padding: 12px 14px;
+  }
+} 

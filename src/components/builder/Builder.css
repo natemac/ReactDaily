@@ -1,0 +1,146 @@
+.builder-container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  
+  min-height: 100vh;
+}
+
+.builder-title {
+  text-align: center;
+  margin: 0 0 0px 0;
+  padding: 0;
+  font-size: 28px;
+  color: #333;
+  font-weight: 600;
+}
+
+.builder-content {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  max-width: 650px;
+  padding: 10px;
+}
+
+.grid-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+/* Updated styles for the buttons layout */
+.buttons-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto 24px auto;
+  width: 600px;
+  padding: 0 15px;
+  gap: 16px;
+}
+
+.share-puzzle-btn {
+  flex: 1;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 2px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(76, 175, 80, 0.3);
+  text-align: center;
+}
+
+.share-puzzle-btn:hover {
+  background-color: #45a049;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(76, 175, 80, 0.4);
+}
+
+.back-to-game-btn {
+  flex: 1;
+  display: inline-block;
+  background-color: #2196F3;
+  color: white;
+  text-decoration: none;
+  padding: 2px;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(33, 150, 243, 0.3);
+}
+
+.back-to-game-btn:hover {
+  background-color: #0b7dda;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(33, 150, 243, 0.4);
+}
+
+/* Keep the old classes for compatibility */
+.button-row {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto 24px auto;
+  width: 600px;
+  padding: 0 15px;
+}
+
+.export-btn {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(76, 175, 80, 0.3);
+}
+
+.export-btn:hover {
+  background-color: #45a049;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(76, 175, 80, 0.4);
+}
+
+.navigation-row {
+  display: flex;
+  justify-content: center;
+  width: 600px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 840px) {
+  .builder-content {
+    margin: 0 20px 40px 20px;
+    padding: 25px;
+  }
+}
+
+@media (max-width: 640px) {
+  .builder-content {
+    border-radius: 0;
+    margin: 0 0 30px 0;
+    padding: 5px 5px;
+    box-shadow: none;
+    width: 100%;
+  }
+  
+  .button-row,
+  .navigation-row,
+  .buttons-container {
+    width: 100%;
+    padding: 0 15px;
+  }
+  
+  .builder-title {
+    font-size: 24px;
+    padding: 0;
+  }
+} 

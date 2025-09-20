@@ -1,0 +1,92 @@
+.modeControls {
+  display: flex;
+  justify-content: space-around;
+  gap: 12px;
+  width: 600px;
+  margin-bottom: 10px;
+}
+
+.modeControls button {
+  flex: 1;
+  min-width: 0;
+  padding: 14px 8px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  border: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Primary button style (active mode) */
+.primaryBtn {
+  background-color: #4CAF50;
+  color: white;
+  box-shadow: 0 3px 8px rgba(76, 175, 80, 0.3) !important;
+  transform: translateY(-2px);
+}
+
+.primaryBtn:hover {
+  background-color: #45a049;
+  box-shadow: 0 4px 10px rgba(76, 175, 80, 0.4) !important;
+  transform: translateY(-3px);
+}
+
+/* Secondary button style (recording) */
+.secondaryBtn {
+  background-color: #f44336;
+  color: white;
+  animation: pulse 1.5s infinite;
+  box-shadow: 0 3px 8px rgba(244, 67, 54, 0.3) !important;
+}
+
+.secondaryBtn:hover {
+  background-color: #d32f2f;
+  box-shadow: 0 4px 10px rgba(244, 67, 54, 0.4) !important;
+}
+
+/* Tertiary button style (inactive modes) */
+.tertiaryBtn {
+  background-color: #f5f5f5;
+  color: #444;
+  border: none;
+}
+
+.tertiaryBtn:hover {
+  background-color: #e8e8e8;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* Pulse animation for recording button */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(244, 67, 54, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(244, 67, 54, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(244, 67, 54, 0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .modeControls {
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+    padding: 0 5px;
+  }
+  
+  .modeControls button {
+    flex: 1 0 calc(50% - 10px);
+    margin-bottom: 0px;
+    font-size: 15px;
+    padding: 2px 2px;
+  }
+} 

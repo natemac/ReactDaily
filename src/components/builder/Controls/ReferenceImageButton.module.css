@@ -1,0 +1,84 @@
+.container {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  display: flex;
+  gap: 4px;
+  z-index: 10;
+}
+
+.button {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #333;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: all 0.2s ease;
+  backdrop-filter: blur(4px);
+}
+
+.button:hover {
+  background-color: rgba(255, 255, 255, 1);
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.button.active {
+  background-color: rgba(76, 175, 80, 0.9);
+  color: white;
+  box-shadow: 0 2px 8px rgba(76, 175, 80, 0.3);
+}
+
+.button.active:hover {
+  background-color: rgba(76, 175, 80, 1);
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4);
+}
+
+.clearButton {
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: 50%;
+  background-color: rgba(244, 67, 54, 0.9);
+  color: white;
+  font-size: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(244, 67, 54, 0.3);
+  transition: all 0.2s ease;
+}
+
+.clearButton:hover {
+  background-color: rgba(244, 67, 54, 1);
+  transform: scale(1.1);
+  box-shadow: 0 4px 10px rgba(244, 67, 54, 0.4);
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .container {
+    bottom: 8px;
+    left: 8px;
+  }
+  
+  .button {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+  
+  .clearButton {
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+  }
+} 

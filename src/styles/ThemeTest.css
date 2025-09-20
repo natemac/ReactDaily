@@ -1,0 +1,370 @@
+/* Base styles and modern theme (default) */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* Reset and base styles */
+.theme-test-container {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  color: #333;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Theme toggle buttons */
+.theme-toggle {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.theme-button {
+  padding: 8px 16px;
+  background-color: #e0e0e0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.theme-button.active {
+  background-color: #4a90e2;
+  color: white;
+  font-weight: bold;
+}
+
+/* Grid layout */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  max-width: 600px;
+  width: 100%;
+  aspect-ratio: 1/1;
+  margin: 0 auto 20px;
+}
+
+.box {
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  padding: 15px;
+  margin: 2px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 50%);
+}
+
+.box:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Category colors - Modern theme */
+.food {
+  background-color: #FFD93D;
+  color: #333;
+  text-shadow: none;
+}
+
+.travel {
+  background-color: #7FC97F;
+}
+
+.emoji {
+  background-color: #7DAFFF;
+}
+
+.manmade {
+  background-color: #FF6F69;
+}
+
+/* Controls container */
+.controls-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 10px auto;
+  max-width: 600px;
+}
+
+.difficulty-container {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 10px 15px;
+  width: auto;
+  min-width: 200px;
+}
+
+.difficulty-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  width: 100%;
+}
+
+.difficulty-title {
+  margin: 0;
+  font-size: 14px;
+  font-weight: bold;
+  white-space: nowrap;
+  color: #333;
+}
+
+.slider-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.difficulty-label {
+  font-weight: bold;
+  font-size: 14px;
+  transition: opacity 0.3s;
+  user-select: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+/* Toggle switch - Modern style */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  min-width: 44px;
+  height: 24px;
+  margin: 0 2px;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+  box-shadow: 0 2px 3px rgba(0,0,0,0.2);
+}
+
+.toggle-switch input:checked + .slider {
+  background-color: #2196F3;
+}
+
+.toggle-switch input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+/* Share button - Modern style */
+.share-button {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #4a90e2;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+  border: none;
+  margin-top: 20px;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.share-button:hover {
+  background-color: #3a80d2;
+}
+
+.back-link {
+  margin-top: 30px;
+}
+
+.back-link a {
+  color: #4a90e2;
+  text-decoration: none;
+}
+
+.menu-icon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* 8-BIT THEME STYLES */
+body[data-test-theme="8bit"] {
+  background-color: #c4c4c4; /* Nintendo gray */
+}
+
+body[data-test-theme="8bit"] .theme-test-container {
+  font-family: 'Press Start 2P', cursive;
+  color: #1a1a1a;
+}
+
+body[data-test-theme="8bit"] h1 {
+  font-size: 18px;
+  color: #1a1a1a;
+  margin-bottom: 30px;
+  letter-spacing: 1px;
+}
+
+/* Theme toggle buttons for 8-bit theme */
+body[data-test-theme="8bit"] .theme-button {
+  border: 4px solid #000;
+  border-radius: 0;
+  background-color: #ccc;
+  color: #000;
+  box-shadow: 4px 4px #444;
+  transform: translate(0, 0);
+  transition: transform 0.1s step-end, box-shadow 0.1s step-end;
+  font-size: 10px;
+  padding: 8px 12px;
+}
+
+body[data-test-theme="8bit"] .theme-button:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px #444;
+}
+
+body[data-test-theme="8bit"] .theme-button.active {
+  background-color: #00bfff;
+  color: #000;
+}
+
+/* Grid and boxes for 8-bit theme */
+body[data-test-theme="8bit"] .grid {
+  gap: 20px;
+}
+
+body[data-test-theme="8bit"] .box {
+  border: 4px solid #000;
+  border-radius: 0;
+  box-shadow: 4px 4px #444;
+  image-rendering: pixelated;
+  font-size: 16px;
+  text-shadow: none;
+  transition: transform 0.1s step-end, box-shadow 0.1s step-end;
+  background-image: none;
+}
+
+body[data-test-theme="8bit"] .box:hover {
+  transform: scale(1.05);
+  box-shadow: 4px 4px #444;
+}
+
+/* Difficulty controls for 8-bit theme */
+body[data-test-theme="8bit"] .difficulty-container {
+  background: none;
+}
+
+body[data-test-theme="8bit"] .difficulty-title {
+  font-size: 12px;
+}
+
+body[data-test-theme="8bit"] .difficulty-label {
+  font-size: 10px;
+}
+
+/* Pixelated toggle for 8-bit theme */
+body[data-test-theme="8bit"] .toggle-switch {
+  width: 40px;
+  height: 20px;
+}
+
+body[data-test-theme="8bit"] .toggle-switch input + .slider {
+  background-color: #ccc;
+  border: 2px solid #000;
+  border-radius: 0;
+}
+
+body[data-test-theme="8bit"] .toggle-switch input:checked + .slider {
+  background-color: #ff4444;
+}
+
+body[data-test-theme="8bit"] .toggle-switch input + .slider:before {
+  width: 18px;
+  height: 18px;
+  background: white;
+  border-radius: 0;
+  left: 1px;
+  bottom: 1px;
+  box-shadow: none;
+}
+
+body[data-test-theme="8bit"] .toggle-switch input:checked + .slider:before {
+  transform: none;
+  left: 20px;
+}
+
+/* 8-bit share button */
+body[data-test-theme="8bit"] .share-button {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 10px 20px;
+  background-color: #00bfff;
+  color: #000;
+  text-decoration: none;
+  border: 4px solid #000;
+  box-shadow: 4px 4px #000;
+  border-radius: 0;
+  font-size: 12px;
+  transition: transform 0.1s step-end, box-shadow 0.1s step-end;
+}
+
+body[data-test-theme="8bit"] .share-button:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px #000;
+  background-color: #00bfff;
+}
+
+body[data-test-theme="8bit"] .back-link a {
+  color: #1a1a1a;
+  text-decoration: underline;
+  font-size: 12px;
+}
+
+body[data-test-theme="8bit"] .menu-icon {
+  font-size: 20px;
+  color: #1a1a1a;
+} 

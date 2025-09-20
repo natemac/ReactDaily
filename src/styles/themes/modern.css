@@ -1,0 +1,59 @@
+/* Modern Theme - Default Appearance
+ * This theme uses clean, modern styling with smooth corners and gradients
+ */
+
+@import './themeBase.css';
+
+[data-theme='modern'] {
+  /* Colors - Modern, clean palette */
+  --primary-color: #4a90e2;
+  --secondary-color: #50e3c2;
+  --accent-color: #f5a623;
+  --background-color: #ffffff;
+  --text-color: #333333;
+  --border-color: #e0e0e0;
+  --success-color: #4caf50;
+  --error-color: #f44336;
+  --warning-color: #ff9800;
+  --disabled-color: #9e9e9e;
+  
+  /* Typography - Modern sans-serif */
+  --font-family-primary: 'Helvetica Neue', Arial, sans-serif;
+  
+  /* Borders - Smooth rounded corners */
+  --border-radius-small: 4px;
+  --border-radius-medium: 8px;
+  --border-radius-large: 12px;
+  
+  /* Shadows - Subtle depth */
+  --shadow-small: 0 2px 5px rgba(0, 0, 0, 0.08);
+  --shadow-medium: 0 4px 10px rgba(0, 0, 0, 0.1);
+  --shadow-large: 0 8px 30px rgba(0, 0, 0, 0.12);
+  
+  /* Transitions - Smooth animations */
+  --transition-quick: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-regular: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Grid */
+  --grid-line-color: rgba(200, 200, 200, 0.5);
+  --grid-point-color: rgba(100, 100, 100, 0.8);
+  
+  /* Controls - Polished look */
+  --button-background: linear-gradient(to bottom, #4a90e2, #3a80d2);
+  --button-hover-background: linear-gradient(to bottom, #5aa0f2, #4a90e2);
+  --button-active-background: linear-gradient(to bottom, #3a80d2, #2a70c2);
+  
+  /* Menu - Clean, minimal */
+  --menu-background: white;
+  --menu-border-color: rgba(0, 0, 0, 0.1);
+  --menu-shadow: var(--shadow-medium);
+  
+  /* Theme name - Used by menu */
+  --theme-name: 'Modern';
+}
+
+/* Global font control for modern theme */
+[data-theme='modern'] * {
+  font-family: var(--font-family-primary) !important;
+} 

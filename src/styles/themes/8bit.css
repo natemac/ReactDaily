@@ -1,0 +1,589 @@
+/* 8-Bit Theme - Retro Gaming Appearance
+ * This theme emulates classic 8-bit video games with pixelated aesthetics
+ */
+
+@import './themeBase.css';
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+[data-theme='8bit'] {
+  /* Colors - Limited retro palette */
+  --primary-color: #00bfff;
+  --secondary-color: #92cc41;
+  --accent-color: #e76e55;
+  --background-color: #c4c4c4; /* Nintendo gray */
+  --text-color: #1a1a1a;
+  --border-color: #000000;
+  --success-color: #92cc41;
+  --error-color: #e76e55;
+  --warning-color: #f7d51d;
+  --disabled-color: #757575;
+ 
+  /* Category colors */
+  --yellow-color: #FFD93D;
+  --green-color: #7FC97F;
+  --blue-color: #7DAFFF;
+  --red-color: #FF6F69;
+ 
+  /* Typography - Pixel font */
+  --font-family-primary: 'Press Start 2P', cursive;
+  --font-size-small: 0.6rem;
+  --font-size-regular: 0.8rem;
+  --font-size-large: 1rem;
+  --font-size-xlarge: 1.2rem;
+  --font-size-xxlarge: 1.5rem;
+ 
+  /* Borders - Pixelated edges (no curves) */
+  --border-radius-small: 0;
+  --border-radius-medium: 0;
+  --border-radius-large: 0;
+  --border-radius-pill: 0;
+  --border-width-thin: 2px;
+  --border-width-regular: 4px;
+  --border-width-thick: 6px;
+ 
+  /* Shadows - Hard, pixelated */
+  --shadow-small: 4px 4px #444;
+  --shadow-medium: 6px 6px #444;
+  --shadow-large: 8px 8px #444;
+ 
+  /* Transitions - Sharp, no easing */
+  --transition-quick: 0.05s step-end;
+  --transition-regular: 0.1s step-end;
+  --transition-slow: 0.2s step-end;
+ 
+  /* Grid */
+  --grid-line-color: #444444;
+  --grid-point-color: #888888;
+ 
+  /* Controls - Retro style */
+  --button-background: var(--primary-color);
+  --button-text-color: #000000;
+  --button-hover-background: var(--primary-color);
+  --button-active-background: var(--primary-color);
+  --slider-track-color: #cccccc;
+  --slider-thumb-color: #ffffff;
+ 
+  /* Menu - 8-bit style */
+  --menu-background: #8395a7;
+  --menu-text-color: #f8f8f8;
+  --menu-border-color: #000000;
+  --menu-hover-background: #444444;
+  --menu-active-background: var(--primary-color);
+  --menu-shadow: 4px 4px #000;
+ 
+  /* Theme name - Used by menu */
+  --theme-name: '8-Bit';
+}
+
+/* Game header styling for 8-bit theme */
+[data-theme='8bit'] .game-header {
+  border-radius: 0;
+  border: 2px solid #000;
+  box-shadow: var(--shadow-small);
+  padding: 3px;
+}
+
+[data-theme='8bit'] .category-display {
+  font-size: 0.7rem; /* Smaller font size for the category text */
+  font-family: var(--font-family-primary);
+}
+
+[data-theme='8bit'] .timer-display {
+  font-size: 0.7rem; /* Smaller font size for the timer */
+  font-family: var(--font-family-primary);
+}
+
+/* For mobile screens, make it even smaller */
+@media (max-width: 600px) {
+  [data-theme='8bit'] .category-display,
+  [data-theme='8bit'] .timer-display {
+    font-size: 0.7rem;
+  }
+}
+
+/* Global styles */
+[data-theme='8bit'] body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  image-rendering: pixelated;
+  font-family: var(--font-family-primary);
+}
+
+[data-theme='8bit'] h1,
+[data-theme='8bit'] h2,
+[data-theme='8bit'] h3 {
+  color: var(--text-color);
+  letter-spacing: 1px;
+  font-family: var(--font-family-primary);
+}
+
+[data-theme='8bit'] .app-container {
+  padding: 10px;
+}
+
+/* Buttons and interactive elements */
+[data-theme='8bit'] button,
+[data-theme='8bit'] .button,
+[data-theme='8bit'] .builder-button {
+  border: var(--border-width-regular) solid var(--border-color);
+  box-shadow: var(--shadow-small);
+  transform: translate(0, 0);
+  transition: transform 0.1s step-end, box-shadow 0.1s step-end;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 0;
+  color: var(--button-text-color);
+  font-family: var(--font-family-primary);
+  font-size: 0.7rem;
+  padding: 12px 16px;
+}
+
+[data-theme='8bit'] button:hover,
+[data-theme='8bit'] .button:hover,
+[data-theme='8bit'] .builder-button:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px #444;
+}
+
+[data-theme='8bit'] button:active,
+[data-theme='8bit'] .button:active,
+[data-theme='8bit'] .builder-button:active {
+  transform: translate(4px, 4px);
+  box-shadow: none;
+}
+
+/* Home page and category grid */
+[data-theme='8bit'] .home h1 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  font-family: var(--font-family-primary);
+}
+
+[data-theme='8bit'] .categories-grid {
+  gap: 20px;
+}
+
+[data-theme='8bit'] .color-square {
+  border: 4px solid #000;
+  box-shadow: 4px 4px #444;
+  border-radius: 0;
+  background-image: none;
+  image-rendering: pixelated;
+  transition: transform 0.1s step-end, box-shadow 0.1s step-end;
+}
+
+[data-theme='8bit'] .color-square:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px #444;
+}
+
+[data-theme='8bit'] .color-square h3 {
+  font-size: 1.2rem;
+  text-shadow: none;
+  color: var(--text-color);
+  font-family: var(--font-family-primary);
+}
+
+[data-theme='8bit'] .yellow h3 {
+  color: #1a1a1a;
+}
+
+/* Pixelated borders for elements */
+[data-theme='8bit'] .dialog,
+[data-theme='8bit'] .card,
+[data-theme='8bit'] .modal-content {
+  border: var(--border-width-regular) solid var(--border-color);
+  box-shadow: var(--shadow-medium);
+  image-rendering: pixelated;
+  border-radius: 0;
+}
+
+/* Difficulty toggle with 8-bit styling */
+[data-theme='8bit'] .difficulty-container {
+  background: none;
+  font-size: 12px;
+}
+
+[data-theme='8bit'] .difficulty-title {
+  font-size: 0.8rem;
+  color: var(--text-color);
+  font-family: var(--font-family-primary);
+}
+
+[data-theme='8bit'] .difficulty-label {
+  font-size: 0.6rem;
+  color: var(--text-color);
+  font-family: var(--font-family-primary);
+}
+
+[data-theme='8bit'] .toggle-switch {
+  width: 40px;
+  height: 20px;
+}
+
+[data-theme='8bit'] .toggle-switch input + .slider {
+  background-color: #ccc;
+  border: 2px solid #000;
+  border-radius: 0;
+}
+
+[data-theme='8bit'] .toggle-switch input:checked + .slider {
+  background-color: #ff4444;
+}
+
+[data-theme='8bit'] .toggle-switch input + .slider:before {
+  width: 18px;
+  height: 18px;
+  background: white;
+  border-radius: 0;
+  left: 1px;
+  bottom: 1px;
+  box-shadow: none;
+}
+
+[data-theme='8bit'] .toggle-switch input:checked + .slider:before {
+  transform: none;
+  left: 20px;
+}
+
+/* Result overlay */
+[data-theme='8bit'] .result-overlay {
+  border: 2px solid #000;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 0;
+}
+
+[data-theme='8bit'] .result-overlay p {
+  font-size: 0.6rem;
+  color: #fff;
+  font-family: var(--font-family-primary);
+}
+
+/* Menu styling */
+[data-theme='8bit'] .hamburger-icon,
+[data-theme='8bit'] .hamburgerIcon {
+  font-size: 24px;
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 20px;
+}
+
+[data-theme='8bit'] .hamburger-icon span,
+[data-theme='8bit'] .hamburgerIcon span {
+  display: block;
+  height: 4px;
+  width: 100%;
+  background-color: var(--text-color);
+  border-radius: 0;
+  transition: all 0.1s step-end;
+}
+
+/* Theme buttons in menu */
+[data-theme='8bit'] .themeButton {
+  border: 4px solid #000;
+  border-radius: 0;
+  box-shadow: var(--shadow-small);
+  transition: transform 0.1s step-end, box-shadow 0.1s step-end;
+  font-family: var(--font-family-primary);
+  font-size: 0.6rem;
+}
+
+[data-theme='8bit'] .themeButton:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px #444;
+}
+
+[data-theme='8bit'] .themeButton.active {
+  background-color: var(--primary-color);
+  color: #000;
+}
+
+/* Mobile styling adjustments */
+@media (max-width: 600px) {
+  [data-theme='8bit'] .home h1 {
+    font-size: 1rem;
+  }
+ 
+  [data-theme='8bit'] .color-square h3 {
+    font-size: 1rem;
+  }
+ 
+  [data-theme='8bit'] .difficulty-title {
+    font-size: 0.7rem;
+  }
+ 
+  [data-theme='8bit'] .difficulty-label {
+    font-size: 0.6rem;
+  }
+ 
+  [data-theme='8bit'] .builder-button {
+    font-size: 0.6rem;
+    padding: 10px;
+  }
+}
+
+[data-theme='8bit'] .hamburgerIcon.open span:nth-child(1) {
+  transform: translateY(8px) rotate(90deg);
+}
+
+[data-theme='8bit'] .hamburgerIcon.open span:nth-child(2) {
+  opacity: 0;
+}
+
+[data-theme='8bit'] .hamburgerIcon.open span:nth-child(3) {
+  transform: translateY(-8px) rotate(-90deg);
+}
+
+/* Menu content styling */
+[data-theme='8bit'] .menuContent,
+[data-theme='8bit'] .menuPanel {
+  background-color: #212529;
+  font-family: var(--font-family-primary);
+}
+
+/* Global font control - this ensures the font is applied to EVERYTHING */
+[data-theme='8bit'] * {
+  font-family: var(--font-family-primary) !important;
+}
+
+/* Menu styling - Ensure all text in menu uses proper font */
+[data-theme='8bit'] .menuPanel,
+[data-theme='8bit'] .menuContent,
+[data-theme='8bit'] .menuSection,
+[data-theme='8bit'] .menuItem,
+[data-theme='8bit'] .toggleContainer,
+[data-theme='8bit'] .volumeControl,
+[data-theme='8bit'] .themeContainer {
+  font-family: var(--font-family-primary) !important;
+}
+
+/* Ensure specific elements use the right font */
+[data-theme='8bit'] .toggleLabel,
+[data-theme='8bit'] .sectionTitle,
+[data-theme='8bit'] label,
+[data-theme='8bit'] .volumeValue,
+[data-theme='8bit'] span,
+[data-theme='8bit'] button,
+[data-theme='8bit'] input,
+[data-theme='8bit'] .testSoundButton {
+  font-family: var(--font-family-primary) !important;
+}
+
+/* Audio section specific styling */
+[data-theme='8bit'] .sectionTitle {
+  font-size: 1.2rem !important;
+  color: #fff !important;
+}
+
+[data-theme='8bit'] .volumeControl label,
+[data-theme='8bit'] .toggleLabel,
+[data-theme='8bit'] .volumeValue {
+  font-size: 0.6rem !important;
+  color: #fff !important;
+}
+
+/* Volume slider styling */
+[data-theme='8bit'] .volumeSlider,
+[data-theme='8bit'] input[type="range"] {
+  height: 8px;
+  background-color: #333;
+  border: 2px solid #000;
+  border-radius: 0;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+[data-theme='8bit'] .volumeSlider::-webkit-slider-thumb,
+[data-theme='8bit'] input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background-color: white;
+  border: 2px solid #000;
+  border-radius: 0;
+}
+
+[data-theme='8bit'] .volumeSlider::-moz-range-thumb,
+[data-theme='8bit'] input[type="range"]::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background-color: white;
+  border: 2px solid #000;
+  border-radius: 0;
+}
+
+/* Test Sound button */
+[data-theme='8bit'] .testSoundButton,
+[data-theme='8bit'] button.testSoundButton {
+  font-family: var(--font-family-primary) !important;
+  border: 4px solid #000 !important;
+  border-radius: 0 !important;
+  background-color: var(--primary-color) !important;
+  color: #000 !important;
+  box-shadow: 4px 4px #444 !important;
+  transform: translate(0, 0) !important;
+  transition: transform 0.1s step-end, box-shadow 0.1s step-end !important;
+  font-size: 0.7rem !important;
+  padding: 10px !important;
+  text-transform: uppercase !important;
+  margin-top: 10px !important;
+}
+
+[data-theme='8bit'] .testSoundButton:hover,
+[data-theme='8bit'] button.testSoundButton:hover {
+  transform: translate(2px, 2px) !important;
+  box-shadow: 2px 2px #444 !important;
+}
+
+/* Menu navigation items */
+[data-theme='8bit'] .menuItem {
+  border: 2px solid transparent;
+  padding: 10px;
+  margin-bottom: 8px;
+  transition: all 0.1s step-end;
+}
+
+[data-theme='8bit'] .menuItem:hover {
+  border: 2px solid var(--border-color);
+  box-shadow: 2px 2px #444;
+  transform: translate(0, 0);
+}
+
+[data-theme='8bit'] .menuItem:active {
+  transform: translate(2px, 2px);
+  box-shadow: none;
+}
+
+/* 8-bit style active navigation item */
+[data-theme='8bit'] .menuItem.active {
+  background-color: var(--primary-color);
+  border: 2px solid var(--border-color);
+  box-shadow: 2px 2px #444 inset;
+  color: #000;
+  font-weight: normal;
+  border-left: 4px solid var(--border-color);
+}
+
+/* Menu dividers */
+[data-theme='8bit'] .divider {
+  height: 4px;
+  background-color: var(--border-color);
+  opacity: 1;
+  border-top: 2px solid #000;
+  border-bottom: 2px solid #000;
+}
+
+/* Section titles */
+[data-theme='8bit'] .sectionTitle {
+  position: relative;
+  padding-left: 10px;
+  margin-bottom: 15px;
+}
+
+[data-theme='8bit'] .sectionTitle:before {
+  content: '>';
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* Music Button - 8-bit style */
+[data-theme='8bit'] .testMusicButton {
+  font-family: var(--font-family-primary) !important;
+  border: 4px solid #000 !important;
+  border-radius: 0 !important;
+  background-color: #8f43ee !important; /* Purple color for music */
+  color: #fff !important;
+  box-shadow: 4px 4px #444 !important;
+  transform: translate(0, 0) !important;
+  transition: transform 0.1s step-end, box-shadow 0.1s step-end !important;
+  font-size: 0.7rem !important;
+  padding: 10px !important;
+  text-transform: uppercase !important;
+  margin-top: 10px !important;
+}
+
+[data-theme='8bit'] .testMusicButton:hover,
+[data-theme='8bit'] button.testMusicButton:hover {
+  transform: translate(2px, 2px) !important;
+  box-shadow: 2px 2px #444 !important;
+}
+
+[data-theme='8bit'] .songSelectorControls {
+  border: 2px solid #000 !important;
+  background-color: #222 !important;
+  border-radius: 0 !important;
+  padding: 8px !important;
+}
+
+[data-theme='8bit'] .songNavButton {
+  border: 2px solid #000 !important;
+  border-radius: 0 !important;
+  background-color: #4a90e2 !important;
+  color: #fff !important;
+  font-family: monospace !important;
+  box-shadow: 2px 2px #444 !important;
+  padding: 3px 6px !important;
+}
+
+[data-theme='8bit'] .songNavButton:hover {
+  transform: translate(1px, 1px) !important;
+  box-shadow: 1px 1px #444 !important;
+}
+
+[data-theme='8bit'] .songName {
+  font-family: 'Courier New', monospace !important;
+  color: #fff !important;
+  text-shadow: 1px 1px 0 #000 !important;
+  letter-spacing: 1px !important;
+}
+
+/* Music Player Control Icons - Make them visible in 8-bit theme */
+[data-theme='8bit'] .modernControlButton svg,
+[data-theme='8bit'] .shuffleButton svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+  fill: currentColor;
+  color: #ffffff;
+  /* Make pixelated edges for 8-bit style */
+  image-rendering: pixelated;
+  /* Add a white outline */
+  filter: drop-shadow(0 0 1px #fff);
+}
+
+/* Increase button size and padding to make controls more visible */
+[data-theme='8bit'] .modernControlButton,
+[data-theme='8bit'] .shuffleButton {
+  width: 40px;
+  height: 40px;
+  padding: 5px;
+  background-color: var(--primary-color);
+  color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Add distinct styling for play/stop button */
+[data-theme='8bit'] .modernControlButton:nth-child(2) {
+  width: 44px;
+  height: 44px;
+  background-color: var(--accent-color);
+}
+
+/* Ensure shuffle button has distinct styling when active */
+[data-theme='8bit'] .shuffleButton.active {
+  background-color: #000;
+  color: #fff;
+  box-shadow: none;
+}
+
+[data-theme='8bit'] .shuffleButton.active svg {
+  color: var(--secondary-color);
+  filter: drop-shadow(0 0 2px var(--secondary-color));
+}
